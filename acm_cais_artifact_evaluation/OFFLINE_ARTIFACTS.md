@@ -1,6 +1,6 @@
 # Offline Artifacts for Zero-API Review
 
-This note is for ACM artifact reviewers who want to inspect saved evidence without spending API credits.
+This note is for anyone who wants to inspect saved evidence without spending API credits.
 
 ## Strong Offline Domains
 
@@ -40,7 +40,7 @@ Then:
 2. Inspect the saved logs/checkpoints listed above.
 3. Only if needed, try the live rerun path from the domain README.
 
-## Quick Numbers Reviewers Can Verify Offline
+## Quick Numbers You Can Verify Offline
 
 ### AIME
 

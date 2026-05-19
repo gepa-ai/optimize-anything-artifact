@@ -75,7 +75,7 @@ Then inspect the files named in `OFFLINE_ARTIFACTS.md` if you want to audit indi
 5. `domains/cloud_scheduling/cloudcast/offline_logs/cloudcast_output.log`
 6. `domains/gskill/offline_runs/`
 
-These paths let reviewers inspect saved trajectories, checkpoints, best artifacts, and post-hoc evaluations without making model calls.
+These paths let users inspect saved trajectories, checkpoints, best artifacts, and post-hoc evaluations without making model calls.
 The expected verifier output is saved in `offline_verification_logs/verification_v1.4.log`.
 
 Best offline-supported domains:

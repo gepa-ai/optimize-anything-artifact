@@ -40,7 +40,7 @@ The bundled `logs/` directory contains the full optimization output that produce
 | `fast_p_curve.png` | Higher-resolution version of the same |
 | `speedup.png` | Per-problem speedup bar chart |
 
-## Reproduction (for reviewers with a V100)
+## Reproduction (V100)
 
 ### Environment
 

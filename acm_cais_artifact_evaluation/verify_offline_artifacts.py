@@ -2,7 +2,7 @@
 """Verify bundled ACM CAIS artifacts without API calls.
 
 This script intentionally uses only the Python standard library. It is meant to
-run in a clean checkout before reviewers install any domain-specific packages.
+run in a clean checkout before installing any domain-specific packages.
 """
 
 from __future__ import annotations

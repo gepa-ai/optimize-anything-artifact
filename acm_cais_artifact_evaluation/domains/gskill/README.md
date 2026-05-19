@@ -121,7 +121,7 @@ Results saved to `gepa_results/logs/run_<timestamp>_<id>/`:
 
 ## Offline Review
 
-This artifact now includes saved offline evidence under `offline_runs/`, so reviewers can inspect the main claims without spending API credits.
+This artifact now includes saved offline evidence under `offline_runs/`, so users can inspect the main claims without spending API credits.
 
 ### Saved GEPA training runs
 

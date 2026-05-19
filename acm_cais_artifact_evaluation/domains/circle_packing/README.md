@@ -8,7 +8,7 @@
 
 ## Reproduction
 
-`main.py` is wired to use `./logs/` as the GEPA run directory. Because the bundled `logs/gepa_state.bin` already exists, GEPA will load that checkpoint and resume from the paper run rather than starting from scratch — letting reviewers verify the optimized solver immediately.
+`main.py` is wired to use `./logs/` as the GEPA run directory. Because the bundled `logs/gepa_state.bin` already exists, GEPA will load that checkpoint and resume from the paper run rather than starting from scratch, letting users verify the optimized solver immediately.
 
 ```bash
 export OPENAI_API_KEY=<your-key>

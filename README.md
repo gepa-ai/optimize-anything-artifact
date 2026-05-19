@@ -2,7 +2,7 @@
 
 This repository is the **reproducibility artifact** for the GEPA paper at ACM CAIS 2026.
 
-> **AEC reviewers — start here:** [`acm_cais_artifact_evaluation/README.md`](./acm_cais_artifact_evaluation/README.md). Each evaluation domain has its own subdirectory under `acm_cais_artifact_evaluation/domains/` with a runnable `main.py`, a per-domain README mapping the folder to a section of the paper, and the saved `GEPAState` checkpoint from the paper run.
+> **Start here:** [`acm_cais_artifact_evaluation/README.md`](./acm_cais_artifact_evaluation/README.md). Each evaluation domain has its own subdirectory under `acm_cais_artifact_evaluation/domains/` with a runnable `main.py`, a per-domain README mapping the folder to a section of the paper, and the saved `GEPAState` checkpoint from the paper run.
 
 The full GEPA library source is included below for self-contained reproducibility.
 
