@@ -14,6 +14,7 @@ This artifact supports two review modes:
 ## What this artifact contains
 
 - `domains/` — one self-contained subdirectory per experimental domain claimed in the paper. Each domain folder is independent and includes its own `README.md`, runnable code, and any artifacts needed to verify the paper's claims.
+- `REEXECUTION_REQUIREMENTS.md` — end-to-end live-rerun requirements, including model configuration, API-cost expectations, rate-limit assumptions, GPU requirements, and per-domain commands.
 - `OFFLINE_ARTIFACTS.md` — zero-API guide to bundled trajectories, checkpoints, and saved evaluations.
 - `verify_offline_artifacts.py` — no-API verifier for the bundled logs, trajectories, and saved outputs.
 - `offline_verification_logs/` — saved output from running the verifier after `uv sync --extra dev`.
@@ -42,6 +43,9 @@ Additional requirements for selected live reruns:
 - API keys for the model provider named in each domain README.
 - NVIDIA V100 32GB GPU, CUDA 12.1+, and NVCC for KernelBench.
 - Docker for full gskill training/evaluation reruns.
+
+For per-domain live-rerun costs, model settings, rate-limit assumptions, and
+hardware needs, see `REEXECUTION_REQUIREMENTS.md`.
 
 ## Quick repository map
 
@@ -89,8 +93,8 @@ Best offline-supported domains:
 
 Still primarily live-rerun dependent or only partially supported offline:
 
-- `domains/cloud_scheduling/can_be_late/` — code, traces, and plots are bundled, but not a full saved trajectory bundle.
-- `domains/kernelbench/` — logs are bundled, but performance reproduction still requires a V100-class GPU.
+- `domains/cloud_scheduling/can_be_late/` — code, real traces, simulator summary CSVs, and plots are bundled, but not a full saved GEPA trajectory checkpoint/log bundle.
+- `domains/kernelbench/` — saved kernels and aggregate speedups are bundled, but independent performance reproduction still requires a V100-class GPU.
 - `domains/svg_cad/` and `domains/modeling_3d/` — useful tutorial assets are present, but they are not the strongest no-API validation path.
 
 ## License

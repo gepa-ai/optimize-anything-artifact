@@ -19,6 +19,23 @@ Reproducing this domain requires:
 
 The bundled `logs/` directory contains the full optimization output that produced the paper numbers.
 
+## Counting note for offline audit
+
+A counting mismatch can appear between the headline `87%` claim and the
+raw `best_kernels_aggregated.json` file. The bundled JSON contains 31 saved
+tasks and, when counted directly, `26 / 31 = 83.87%` have speedup `>= 1.0`.
+This is the exact number checked by `verify_offline_artifacts.py`.
+
+The paper text rounds the Fast_p curve produced by the original plotting script
+and reports the headline as `Fast_p(1.0) = 0.87`. To avoid ambiguity, treat the
+bundled JSON as the auditable offline source of truth for this artifact:
+
+- saved tasks: `31`
+- speedup `>= 1.0`: `26 / 31 = 83.87%`
+- maximum saved speedup: `30.35x`
+
+Independent performance reproduction still requires the V100 environment below.
+
 ## Code (this folder)
 
 | File | Purpose |

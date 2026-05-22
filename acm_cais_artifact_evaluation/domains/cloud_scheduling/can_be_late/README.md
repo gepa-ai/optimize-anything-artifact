@@ -81,6 +81,19 @@ python examples/adrs/can_be_late/main.py \
     --max-metric-calls 100
 ```
 
+For the CAIS artifact path, run from this directory:
+
+```bash
+tar -xzf simulator/real_traces.tar.gz -C simulator
+export OPENAI_API_KEY=<your-key>
+uv run python main.py --model openai/gpt-5.1
+```
+
+Use `--max-traces 10 --max-metric-calls 20` for a smoke test. Lower
+`--max-metric-calls` and `max_workers` in `main.py` if your provider rate limit
+is lower than the paper-run setting. The paper-scale rerun requirements and
+expected costs are summarized in `../../../REEXECUTION_REQUIREMENTS.md`.
+
 ## Environment Variables
 
 | Variable | Description |
@@ -97,6 +110,28 @@ Results are saved to the run directory:
 - `best_program.py` - Best evolved strategy
 - `metrics.json` - Performance summary
 - `candidates/` - All generated candidates
+
+## Offline Evidence
+
+This folder includes offline evidence for the simulator setup and paper result:
+
+- `simulator/real_traces.tar.gz` - real spot-availability traces
+- `simulator/scripts/results.csv` - simulator summary table
+- `optimization_trajectory.png` / `.pdf` - saved paper trajectory plot
+
+Useful values in `simulator/scripts/results.csv`:
+
+| Strategy | Mean normalized cost |
+|---|---:|
+| `on_demand` | `1.0` |
+| `greedy` | `0.7742742814980679` |
+| `time_sliced_2_avg` | `0.5986116900739522` |
+| `ideal` | `0.4315939427143388` |
+
+This evidence verifies the bundled trace data, simulator summaries, and plotted
+paper result without API calls. It is weaker than CloudCast because this folder
+does not include a full GEPA checkpoint or textual run log for the paper
+optimization.
 
 ## How It Works
 

@@ -19,6 +19,10 @@ These domains already include concrete saved trajectories or checkpoints:
 - `domains/cloud_scheduling/cloudcast/offline_logs/cloudcast_output.log`
   - Saved optimization log from a late-stage CloudCast run.
   - Shows score improvements and proposed solver code without requiring rerun.
+- `domains/cloud_scheduling/can_be_late/`
+  - `simulator/real_traces.tar.gz` contains the real trace archive used by the simulator.
+  - `simulator/scripts/results.csv` contains simulator summary statistics for baseline and time-sliced strategies.
+  - `optimization_trajectory.png` / `.pdf` contain the paper trajectory plot.
 - `domains/gskill/offline_runs/`
   - Saved GEPA training runs for `blevesearch__bleve` and `pallets__jinja`.
   - Saved Claude Code post-hoc evaluations with and without learned skills.
@@ -82,6 +86,23 @@ In `domains/cloud_scheduling/cloudcast/offline_logs/cloudcast_output.log`:
 
 This gives a concrete offline trajectory showing improvement in both score and raw cost.
 
+### Can't Be Late
+
+In `domains/cloud_scheduling/can_be_late/`:
+
+- `simulator/real_traces.tar.gz` bundles the real spot-availability traces.
+- `simulator/scripts/results.csv` records simulator summary statistics:
+  - `on_demand` mean cost: `1.0`
+  - `greedy` mean cost: `0.7742742814980679`
+  - `time_sliced_2_avg` mean cost: `0.5986116900739522`
+  - `ideal` mean cost: `0.4315939427143388`
+- `optimization_trajectory.png` and `.pdf` provide the saved paper trajectory plot.
+
+This strengthens the zero-API evidence for the problem setup, simulator inputs,
+baseline behavior, and plotted paper result. It is still not as strong as
+CloudCast because this artifact does not include a full GEPA checkpoint or
+textual run log for Can't Be Late.
+
 ### gskill Training
 
 In `domains/gskill/offline_runs/gepa_skills_training/`:
@@ -115,10 +136,10 @@ Each run also includes `results.jsonl`, `test_ids.txt`, and the exact skill text
 These areas are less complete as offline-only artifacts:
 
 - `domains/cloud_scheduling/can_be_late/`
-  - Has code, traces, and paper plots.
-  - Does not yet include a comparably rich saved GEPA trajectory bundle like CloudCast.
+  - Has code, real traces, simulator summary CSVs, and paper plots.
+  - Does not yet include a comparably rich saved GEPA trajectory checkpoint/log bundle like CloudCast.
 - `domains/cloud_scheduling/cloudcast/`
-  - Now has a saved run log, but not yet a full `gepa_state.bin` checkpoint bundle in this artifact subfolder.
+  - Has a saved run log with concrete score and raw-cost improvements, but not yet a full `gepa_state.bin` checkpoint bundle in this artifact subfolder.
 - `domains/gskill/`
   - Offline evidence is now strong for analysis, but full rerun still depends on Docker plus external model access.
 - `domains/kernelbench/`

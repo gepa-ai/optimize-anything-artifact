@@ -2,9 +2,10 @@
 [PASS] ARC-AGI: run.log/test_run.log confirm headline trajectory; saved JSON confirms 34/80 -> 73/80 subset
 [PASS] Circle Packing: state tracker has 133 entries; best score 2.635983362593
 [PASS] CloudCast: saved log improves score 0.005200 -> 0.009009 and raw cost 209.172 -> 128.804
+[PASS] Can't Be Late: offline simulator evidence present: real traces archive, paper trajectory plot, results.csv mean costs on_demand=1.000, greedy=0.774, time_sliced_2_avg=0.599, ideal=0.432
 [PASS] gskill Training: run_blevesearch_20260131_131944_d7b877: 0.19->0.85; run_pallets_20260131_152447_4347c2: 0.38->0.59
 [PASS] gskill Claude Code Eval: 8 saved Claude Code evaluation summaries and result files verified
 [PASS] Blackbox: 10 hardest problems verified with 10 optimize_anything and 10 Optuna seed logs each
 [PASS] KernelBench Saved Results: 31 saved kernels; 26/31 have speedup >= 1.0; max speedup=30.35
 
-Summary: 8/8 checks passed
+Summary: 9/9 checks passed

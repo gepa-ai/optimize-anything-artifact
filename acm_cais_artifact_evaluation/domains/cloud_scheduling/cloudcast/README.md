@@ -1,4 +1,4 @@
-# Cloudcast Broadcast Optimization
+# CloudCast Broadcast Optimization
 
 This example demonstrates using GEPA's `optimize_anything` API to optimize a broadcast routing algorithm for multi-cloud data transfer.
 
@@ -79,6 +79,16 @@ python examples/adrs/cloudcast/main.py \
     --run-dir ./runs/cloudcast_test
 ```
 
+For the CAIS artifact path, run from this directory:
+
+```bash
+export OPENAI_API_KEY=<your-key>
+uv run python main.py --model openai/gpt-5.1
+```
+
+The paper-scale rerun requirements and expected costs are summarized in
+`../../../REEXECUTION_REQUIREMENTS.md`.
+
 ### Command Line Arguments
 
 - `--model`: (Required) LLM model for reflection (e.g., "gpt-4o-mini", "gemini-1.5-flash")
@@ -136,3 +146,17 @@ Results are saved to the run directory:
 - `best_program.py`: The optimized search algorithm
 - `metrics.json`: Performance comparison (baseline vs optimized)
 - `candidates/`: All candidate programs generated during optimization
+
+## Offline Evidence
+
+The artifact includes `offline_logs/cloudcast_output.log`, a saved late-stage
+optimization segment. It records:
+
+- base valset score `0.00519955683867755`
+- improved valset score `0.009008762504180836`
+- raw-cost reference `209.172081`
+- improved raw cost `128.8043592`
+- candidate code proposals via `Proposed new text for program`
+
+This is enough to audit improvement dynamics and candidate evolution without
+spending API credits, although it is not a full GEPA checkpoint bundle.

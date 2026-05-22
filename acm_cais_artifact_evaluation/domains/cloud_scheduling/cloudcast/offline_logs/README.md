@@ -4,7 +4,7 @@ This directory contains a saved CloudCast optimization log:
 
 - `cloudcast_output.log`
 
-It is a no-API artifact for reviewers who want to inspect optimization behavior without rerunning the model-driven search.
+It is a no-API artifact for users who want to inspect optimization behavior without rerunning the model-driven search.
 
 ## Useful log anchors
 

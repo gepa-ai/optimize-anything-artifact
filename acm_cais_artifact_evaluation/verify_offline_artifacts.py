@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -116,6 +117,34 @@ def check_cloudcast() -> str:
     return f"saved log improves score {base:.6f} -> {best:.6f} and raw cost {raw_ref:.3f} -> {raw_new:.3f}"
 
 
+def check_cant_be_late() -> str:
+    base = ROOT / "domains/cloud_scheduling/can_be_late"
+    for rel in [
+        "optimization_trajectory.png",
+        "optimization_trajectory.pdf",
+        "simulator/real_traces.tar.gz",
+        "simulator/scripts/results.csv",
+    ]:
+        path = base / rel
+        require(path.is_file(), f"Can't Be Late missing offline artifact: {path.relative_to(ROOT)}")
+        require(path.stat().st_size > 0, f"Can't Be Late offline artifact is empty: {path.relative_to(ROOT)}")
+
+    results_path = base / "simulator/scripts/results.csv"
+    with results_path.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.reader(f, delimiter="\t"))
+    require(len(rows) >= 2, "Can't Be Late results.csv is unexpectedly short")
+    header = rows[0]
+    means = dict(zip(header[1:], [float(x) for x in rows[1][1:]]))
+    require(means["greedy"] < means["on_demand"], "Can't Be Late greedy baseline does not beat on-demand")
+    require(means["time_sliced_2_avg"] < means["greedy"], "Can't Be Late time-sliced result does not beat greedy")
+    require(means["ideal"] < means["time_sliced_2_avg"], "Can't Be Late ideal lower bound is not lower than heuristic results")
+    return (
+        "offline simulator evidence present: real traces archive, paper trajectory plot, "
+        f"results.csv mean costs on_demand={means['on_demand']:.3f}, greedy={means['greedy']:.3f}, "
+        f"time_sliced_2_avg={means['time_sliced_2_avg']:.3f}, ideal={means['ideal']:.3f}"
+    )
+
+
 def check_gskill_training() -> str:
     expected = {
         "run_blevesearch_20260131_131944_d7b877": (0.19, 0.85, 300),
@@ -197,6 +226,7 @@ CHECKS = [
     ("ARC-AGI", check_arc_agi),
     ("Circle Packing", check_circle_packing),
     ("CloudCast", check_cloudcast),
+    ("Can't Be Late", check_cant_be_late),
     ("gskill Training", check_gskill_training),
     ("gskill Claude Code Eval", check_gskill_claude_eval),
     ("Blackbox", check_blackbox),
